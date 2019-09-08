@@ -1,0 +1,10 @@
+{
+  "/": {
+    "target": "https://ws.blockchain.info",
+    "secure": true,
+    "pathRewrite": {
+    "^/posts": ""
+  },
+    "changeOrigin": true
+  }
+}

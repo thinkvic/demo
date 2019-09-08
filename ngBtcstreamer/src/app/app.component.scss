@@ -1,0 +1,47 @@
+.page{
+    margin: 3% 8% 3% 8%;
+}
+
+.title{
+    line-height: 84px; 
+    font-size: 28px;
+    color: #666666;
+}
+
+.icon{
+    color: brown;
+    cursor: pointer;
+    transform: scale(1.5);
+    margin: 30px;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-around
+}
+
+
+.labelbox{
+    margin: 20px;
+    text-align: center
+}
+
+.label{
+    // box-sizing: border-box;  
+    width:30px;
+    height:30px;
+    display: inline-block;
+    border-radius: 6px;
+    opacity: 0.8
+}
+
+
+.box{
+    width: 28%;
+    height: 500px;
+}
+
+
+.header3{
+    color: orange
+}

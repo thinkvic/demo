@@ -1,0 +1,17 @@
+
+.tran{
+    padding: 20px;
+    border: 1px solid grey
+}
+
+.tranhead{
+    color: blue;
+    font-size:24px;
+    margin-bottom:15px
+}
+
+.tranbody{
+    display: flex;
+    justify-content: space-around;
+}
+

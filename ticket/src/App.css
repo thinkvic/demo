@@ -1,0 +1,90 @@
+
+@import '~antd/dist/antd.css';
+
+
+.App {
+  text-align: center;
+}
+
+.rag-green {
+  background-color: lightgreen;
+  color: white
+}
+
+.rag-red {
+  background-color: lightcoral;
+  color: white
+}
+
+
+.green .ant-select-selection {
+  background-color: lightgreen;
+}
+
+.red .ant-select-selection{
+  background-color: pink;
+}
+
+.wrapper{
+  padding-left: 30px;
+}
+
+.grid { 
+  display: grid;
+  /* grid-gap: 0px; */
+  column-gap:30px;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  /* grid-column: span 3; */
+  /* grid-auto-flow: column; */
+
+}
+
+/* The grid-column CSS property is a shorthand property for grid-column-start and grid-column-end specifying a grid item's size and location within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement 
+If two <grid-line> values are given they are separated by "/".
+<integer> && <custom-ident>?
+Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.
+*/
+  .a {
+      grid-column: 1 ;
+      grid-row: 1 ;
+  }
+
+  .b {
+      grid-column: 2;
+      grid-row: 1;
+  }
+  .c {
+      grid-column: 3;
+      grid-row: 1;
+  }
+
+  .d {
+      grid-column: 4;
+      grid-row: 1;
+  }
+  .e {
+      grid-column: 1 ;
+      grid-row: 2;
+  }
+
+  .f {
+      grid-column: 2 ;
+      grid-row: 2;
+  }
+
+  .g {
+    grid-column: 4 ;
+    grid-row: 2;
+  }
+
+  .h {
+    grid-column: 1/3 ;
+    grid-row: 3/5;
+  }
+
+  .i {
+    grid-column: 4 ;
+    grid-row: 4;
+  }
+

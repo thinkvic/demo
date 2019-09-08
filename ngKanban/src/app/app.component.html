@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="column" *ngFor="let col of columns; index as i; first as f; last as l">
+    <div class="colhead" [style.backgroundColor]="col.bc">{{col.name}}</div>
+    <div class="card" *ngFor="let card of col.cards; index as j">
+      <span [hidden]=f (click)="moveleft(i,j)"><</span>  {{card}}  
+      <span [hidden]=l (click)="moveright(i,j)">></span>
+    </div>
+    <div (click)="addcard(i)">+  Add a card</div>
+  </div>
+
+</div>

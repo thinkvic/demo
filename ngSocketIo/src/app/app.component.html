@@ -1,0 +1,17 @@
+<h1>Using Angular with WebSockets</h1>
+<br />
+<button (click)="send(d)">SEND </button> 
+<input type="text" (keyup)=getdata($event)>
+<hr>
+<button (click)="discon()">DISCONNECT </button> 
+<button (click)="con()">CONNECT </button> 
+<button (click)="stream()">STREAM </button> 
+<!-- <h2>Quote: {{ stockQuote }}</h2> -->
+
+<h3 *ngFor="let i of inputs">{{i/100000000}}</h3>
+<h2 *ngFor="let o of outputs">{{o/100000000}}</h2>
+<br />
+
+
+
+

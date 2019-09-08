@@ -1,0 +1,91 @@
+<div class="page">
+
+    <div class="flex">
+
+        <div class="title">BTC Real-Time Unconfirmed Transactions</div>
+
+        <div style="right: 0">
+            <span [hidden]="!streaming">
+                <mat-icon class="icon" (click)="discon()" 
+                matTooltip="PAUSE"
+                [matTooltipPosition]="'above'"
+                > pause_circle_outline </mat-icon>
+            </span>
+            <span href="" [hidden]="streaming">
+                <mat-icon class="icon" (click)="bitstream()"
+                matTooltip="STREAM"
+                [matTooltipPosition]="'above'"
+                > play_circle_outline </mat-icon>
+            </span>
+            <span href="" [hidden]="streaming">
+                <mat-icon class="icon" (click)="bitstream(1000)"
+                matTooltip="SLOW STREAM: Throttle and get latest every 1 sec"
+                [matTooltipPosition]="'above'"> slow_motion_video</mat-icon>
+            </span>
+        </div>
+
+    </div>
+    <hr style="border: 1px dashed; color: lightblue">
+    <br />
+    <br />
+    <br />
+
+
+
+
+    <div class="flex">
+        <!-- <div *ngFor="let label of labels  | keyvalue:0" class="labelbox">
+            <div class="label" [style.backgroundColor]="label.value"></div>
+            <div >{{label.key}}</div>
+        </div> -->
+        <div *ngFor="let label of labels" class="labelbox">
+            <div class="label" [style.backgroundColor]="label.color"></div>
+            <div>{{label.amount}}</div>
+            <!-- [style.fontSize.px]="label.fontsize"  -->
+        </div>
+    </div>
+
+    <div class="flex">
+
+        <mat-card class="box">
+            <mat-card-header class="header3">
+                <mat-card-title>Inputs</mat-card-title>
+                <mat-card-subtitle>BTC</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div *ngFor="let i of inputs" [style.color]="color" [style.fontSize.px]="fontsize">{{i}}</div>
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card class="box">
+            <mat-card-header class="header3">
+                <mat-card-title>Outputs</mat-card-title>
+                <mat-card-subtitle>BTC</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div *ngFor="let o of outputs" [style.color]="color" [style.fontSize.px]="fontsize">{{o}}</div>
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+        </mat-card>
+
+        <mat-card class="box">
+            <mat-card-header class="header3">
+                <mat-card-title>Fees</mat-card-title>
+                <mat-card-subtitle>BTC</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div [style.color]="color" [style.fontSize.px]="fontsize">{{fees}}</div>
+            </mat-card-content>
+            <!-- <mat-card-actions>
+                <button mat-button></button>
+            </mat-card-actions>-->
+        </mat-card>
+
+
+    </div>
+
+    <br />
+
+</div>
