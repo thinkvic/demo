@@ -7,6 +7,30 @@ import '../App.css';
 const { Option } = Select;
 const { TextArea } = Input;
 
+const checkValid = (inputs) => {
+  let validated = false
+  if (inputs.action && inputs.symbol && inputs.qty && inputs.orderType && inputs.tif) {
+    if (inputs.orderType === 'limit') {
+      if (inputs.price > 0 && inputs.stopPrice > 0) {
+        validated = true
+      } else {
+        validated = false
+      }
+    } else { //market
+      validated = true
+    }
+  } else {
+    validated = false
+  }
+  console.log('current check', inputs, validated);
+  return validated;
+  // setValidated(validated)
+}
+
+// 🤔 Question: Why do I sometimes get an infinite refetching loop?
+// This can happen if you’re doing data fetching in an effect without the second dependencies argument. Without it, effects run after every render — and setting the state will trigger the effects again. An infinite loop may also happen if you specify a value that always changes in the dependency array. You can tell which one by removing them one by one. However, removing a dependency you use (or blindly specifying []) is usually the wrong fix. Instead, fix the problem at its source. For example, functions can cause this problem, and putting them inside effects, hoisting them out, or wrapping them with useCallback helps. To avoid recreating objects, useMemo can serve a similar purpose.
+
+
 // class App extends React.Component{}
 // function declaration (function statement) 
 function App(props) {
@@ -34,28 +58,19 @@ function App(props) {
   const [validated, setValidated] = useState(false);
 
   // called each time setValidated is called
+  // if triggered by handlerfunc, more accurate.
+  // a little Wasteful, setSymbols, Loading, OrderNumber all will trigger this...ah eh.
+
   useEffect(
-    () => checkValid()
+    () => {
+      let currentCheck = checkValid(inputs)
+      if ( currentCheck!== validated) {
+        setValidated(currentCheck);
+      }
+    }
   )
 
-  const checkValid = () => {
-    let validated = false
-    if (inputs.action && inputs.symbol && inputs.qty && inputs.orderType && inputs.tif) {
-      if (inputs.orderType === 'limit') {
-        if (inputs.price > 0 && inputs.stopPrice > 0) {
-          validated = true
-        } else {
-          validated = false
-        }
-      } else { //market
-        validated = true
-      }
-    } else {
-      validated = false
-    }
-    console.log('current check', inputs, validated);
-    setValidated(validated)
-  }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -233,7 +248,7 @@ function App(props) {
         <Form.Item label="Comment" className="h">
           {getFieldDecorator('comment', {
             rules: [{ required: false, message: 'Please input comment!' }],
-          })(<TextArea rows={5} placeholder="Comment" onChange={(e) => handleGenericInputChange(e.target.value, 'comment')}/>)}
+          })(<TextArea rows={5} placeholder="Comment" onChange={(e) => handleGenericInputChange(e.target.value, 'comment')} />)}
         </Form.Item>
 
         <Form.Item className="i">
